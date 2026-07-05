@@ -5,7 +5,33 @@ const heartLoader = document.querySelector(".cssload-main");
 const yesBtn = document.querySelector(".js-yes-btn");
 const noBtn = document.querySelector(".js-no-btn");
 
-// Функція для переміщення кнопки "No"
+// ===== ПЕРЕВІРКА НАЯВНОСТІ ВІДЕО =====
+function checkVideoAvailability() {
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+        // Якщо відео не завантажилось - показуємо емодзі
+        video.addEventListener('error', function() {
+            this.style.display = 'none';
+            const fallback = this.parentElement.querySelector('.fallback-emoji');
+            if (fallback) {
+                fallback.style.display = 'block';
+            }
+        });
+        
+        // Перевіряємо через таймер
+        setTimeout(() => {
+            if (video.readyState === 0) {
+                video.style.display = 'none';
+                const fallback = video.parentElement.querySelector('.fallback-emoji');
+                if (fallback) {
+                    fallback.style.display = 'block';
+                }
+            }
+        }, 2000);
+    });
+}
+
+// ===== Функція для переміщення кнопки "No" =====
 function moveNoButton() {
     const containerRect = questionContainer.getBoundingClientRect();
     const btnWidth = noBtn.offsetWidth || 100;
@@ -21,13 +47,13 @@ function moveNoButton() {
 // Для десктопів - наведення миші
 noBtn.addEventListener("mouseover", moveNoButton);
 
-// Для мобільних - дотик (з preventDefault щоб не спрацював click)
+// Для мобільних - дотик
 noBtn.addEventListener("touchstart", (e) => {
     e.preventDefault();
     moveNoButton();
 });
 
-// Також для мобільних - при кліку (якщо touchstart не спрацював)
+// Для мобільних - при кліку
 noBtn.addEventListener("click", (e) => {
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         e.preventDefault();
@@ -35,12 +61,17 @@ noBtn.addEventListener("click", (e) => {
     }
 });
 
-// Автозапуск відео при взаємодії зі сторінкою
+// Автозапуск відео при взаємодії
 document.addEventListener('DOMContentLoaded', () => {
+    // Перевіряємо відео
+    checkVideoAvailability();
+    
     const videos = document.querySelectorAll('video');
     const playVideos = () => {
         videos.forEach(video => {
-            video.play().catch(() => {});
+            if (video.style.display !== 'none') {
+                video.play().catch(() => {});
+            }
         });
         document.removeEventListener('touchstart', playVideos);
         document.removeEventListener('click', playVideos);
@@ -58,6 +89,10 @@ yesBtn.addEventListener("click", () => {
     const timeoutId = setTimeout(() => {
         heartLoader.style.display = "none";
         resultContainer.style.display = "inherit";
-        gifResult.play().catch(() => {});
+        
+        // Перевіряємо чи відео видиме
+        if (gifResult && gifResult.style.display !== 'none') {
+            gifResult.play().catch(() => {});
+        }
     }, 3000);
 });
