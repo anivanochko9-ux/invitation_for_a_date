@@ -5,33 +5,7 @@ const heartLoader = document.querySelector(".cssload-main");
 const yesBtn = document.querySelector(".js-yes-btn");
 const noBtn = document.querySelector(".js-no-btn");
 
-// ===== ПЕРЕВІРКА НАЯВНОСТІ ВІДЕО =====
-function checkVideoAvailability() {
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-        // Якщо відео не завантажилось - показуємо емодзі
-        video.addEventListener('error', function() {
-            this.style.display = 'none';
-            const fallback = this.parentElement.querySelector('.fallback-emoji');
-            if (fallback) {
-                fallback.style.display = 'block';
-            }
-        });
-        
-        // Перевіряємо через таймер
-        setTimeout(() => {
-            if (video.readyState === 0) {
-                video.style.display = 'none';
-                const fallback = video.parentElement.querySelector('.fallback-emoji');
-                if (fallback) {
-                    fallback.style.display = 'block';
-                }
-            }
-        }, 2000);
-    });
-}
-
-// ===== Функція для переміщення кнопки "No" =====
+// Функція для переміщення кнопки "No"
 function moveNoButton() {
     const containerRect = questionContainer.getBoundingClientRect();
     const btnWidth = noBtn.offsetWidth || 100;
@@ -47,13 +21,13 @@ function moveNoButton() {
 // Для десктопів - наведення миші
 noBtn.addEventListener("mouseover", moveNoButton);
 
-// Для мобільних - дотик
+// Для мобільних - дотик (з preventDefault щоб не спрацював click)
 noBtn.addEventListener("touchstart", (e) => {
     e.preventDefault();
     moveNoButton();
 });
 
-// Для мобільних - при кліку
+// Також для мобільних - при кліку (якщо touchstart не спрацював)
 noBtn.addEventListener("click", (e) => {
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
         e.preventDefault();
@@ -61,17 +35,12 @@ noBtn.addEventListener("click", (e) => {
     }
 });
 
-// Автозапуск відео при взаємодії
+// Автозапуск відео при взаємодії зі сторінкою
 document.addEventListener('DOMContentLoaded', () => {
-    // Перевіряємо відео
-    checkVideoAvailability();
-    
     const videos = document.querySelectorAll('video');
     const playVideos = () => {
         videos.forEach(video => {
-            if (video.style.display !== 'none') {
-                video.play().catch(() => {});
-            }
+            video.play().catch(() => {});
         });
         document.removeEventListener('touchstart', playVideos);
         document.removeEventListener('click', playVideos);
@@ -89,10 +58,6 @@ yesBtn.addEventListener("click", () => {
     const timeoutId = setTimeout(() => {
         heartLoader.style.display = "none";
         resultContainer.style.display = "inherit";
-        
-        // Перевіряємо чи відео видиме
-        if (gifResult && gifResult.style.display !== 'none') {
-            gifResult.play().catch(() => {});
-        }
+        gifResult.play().catch(() => {});
     }, 3000);
 });
