@@ -24,35 +24,30 @@ body {
     overflow-x: hidden;
 }
 
-/* ===== СТИЛІ ДЛЯ FALLBACK ЕМОДЗІ ===== */
-.gif-placeholder {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100px;
-    width: 100%;
-}
-
-.fallback-emoji {
+/* ===== АНІМОВАНІ ЕМОДЗІ ===== */
+.big-emoji {
     font-size: 80px;
     text-align: center;
-    animation: pulse 2s ease-in-out infinite;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: block;
+    margin: 0 auto 1rem auto;
 }
 
-@keyframes pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.1); }
+.heart-beat {
+    animation: heartBeat 1.5s ease-in-out infinite;
 }
 
-/* Стилі для кнопки-посилання, яка стоїть під текстом */
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.2); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.15); }
+    60% { transform: scale(1); }
+}
+
+/* Стилі для кнопки-посилання */
 .center-link {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 12px 20px;
     text-align: center;
     font-size: 16px;
@@ -86,14 +81,16 @@ body {
     transform: scale(0.95);
 }
 
+/* ===== ГОЛОВНІ КОНТЕЙНЕРИ ===== */
 .container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 95%;
-    max-width: 600px;
+    max-width: 500px;
     text-align: center;
+    padding: 20px 15px;
 }
 
 .question-container {
@@ -102,27 +99,17 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 95%;
-    max-width: 600px;
+    max-width: 500px;
     text-align: center;
-    padding: 20px 10px;
+    padding: 15px 10px;
     background: transparent;
     border: none;
     box-shadow: none;
 }
 
-.local-gif {
-    width: 100%;
-    max-width: 250px;
-    border-radius: 15px;
-    display: block;
-    margin: 0 auto 2rem auto;
-    pointer-events: none;
-    box-shadow: 0 8px 30px rgba(180, 80, 120, 0.15);
-}
-
 .question {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    margin-bottom: 0.8rem;
     text-align: center;
     color: #4d2c3b;
 }
@@ -132,16 +119,17 @@ body {
     justify-content: center;
     gap: 1.5rem;
     position: relative;
-    min-height: 60px;
+    min-height: 55px;
+    margin-top: 0.3rem;
 }
 
 .btn {
     position: absolute;
     border: none;
     border-radius: 50px;
-    padding: 14px 24px;
+    padding: 12px 22px;
     font-family: "Quicksand", sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -173,39 +161,28 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 95%;
-    max-width: 600px;
+    max-width: 500px;
     text-align: center;
-    padding: 20px 10px;
+    padding: 15px 10px;
     background: transparent;
     border: none;
     box-shadow: none;
 }
 
-.gif-result {
-    border-radius: 15px;
-    margin-bottom: 1.5rem;
-    width: 100%;
-    max-width: 350px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 8px 30px rgba(180, 80, 120, 0.15);
-}
-
 .result-container h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
     color: #4d2c3b;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .result-container h2:last-of-type {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 400;
     color: #7f556b;
-    max-width: 500px;
-    margin: 0 auto 1rem auto;
-    line-height: 1.6;
+    max-width: 450px;
+    margin: 0.5rem auto 0.8rem auto;
+    line-height: 1.5;
 }
 
 /* heart loader */
@@ -215,13 +192,13 @@ body {
     content: "";
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
+    transform: translate(-50%, -50%) scale(0.7);
     margin: 0;
     z-index: 10;
 }
 
 .cssload-main * {
-    font-size: 62px;
+    font-size: 50px;
 }
 
 .cssload-heart {
@@ -326,17 +303,16 @@ body {
 /* ===== МОБІЛЬНА АДАПТАЦІЯ ===== */
 @media (max-width: 768px) {
     .question {
-        font-size: 2.5rem !important;
-        text-align: center;
+        font-size: 2.2rem !important;
     }
 
-    .local-gif {
-        max-width: 180px !important;
-        margin: 0 auto 1.5rem auto !important;
+    .big-emoji {
+        font-size: 60px !important;
+        margin: 0 auto 0.8rem auto !important;
     }
 
     .btn {
-        padding: 10px 18px !important;
+        padding: 10px 16px !important;
         font-size: 14px !important;
         position: relative !important;
     }
@@ -344,10 +320,10 @@ body {
     .button-container {
         display: flex !important;
         justify-content: center !important;
-        gap: 1rem !important;
+        gap: 0.8rem !important;
         flex-wrap: wrap !important;
-        margin-top: 0.5rem !important;
-        min-height: 50px !important;
+        margin-top: 0.3rem !important;
+        min-height: 45px !important;
     }
 
     .yes-btn {
@@ -361,21 +337,16 @@ body {
     }
 
     .result-container h2 {
-        font-size: 2.2rem !important;
+        font-size: 2rem !important;
     }
 
     .result-container h2:last-of-type {
-        font-size: 1rem !important;
+        font-size: 0.95rem !important;
         padding: 0 0.5rem;
     }
 
-    .gif-result {
-        width: 100% !important;
-        max-width: 250px !important;
-    }
-
     .cssload-main {
-        transform: translate(-50%, -50%) scale(0.5) !important;
+        transform: translate(-50%, -50%) scale(0.45) !important;
     }
 
     .center-link {
@@ -386,35 +357,61 @@ body {
 
     .question-container,
     .result-container {
-        width: 95% !important;
+        width: 98% !important;
         max-width: 400px !important;
-        padding: 10px !important;
+        padding: 10px 8px !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
     }
     
-    .fallback-emoji {
-        font-size: 50px !important;
+    .container {
+        width: 98% !important;
+        max-width: 400px !important;
+        padding: 10px 8px !important;
     }
 }
 
+/* Для дуже маленьких телефонів */
 @media (max-width: 400px) {
     .question {
         font-size: 1.8rem !important;
     }
 
+    .big-emoji {
+        font-size: 50px !important;
+    }
+
     .btn {
         font-size: 12px !important;
-        padding: 8px 14px !important;
+        padding: 8px 12px !important;
     }
 
     .result-container h2 {
+        font-size: 1.6rem !important;
+    }
+
+    .result-container h2:last-of-type {
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (max-height: 700px) {
+    .big-emoji {
+        font-size: 50px !important;
+        margin: 0 auto 0.5rem auto !important;
+    }
+    
+    .question {
         font-size: 1.8rem !important;
+        margin-bottom: 0.4rem !important;
     }
-
-    .local-gif {
-        max-width: 150px !important;
+    
+    .btn {
+        padding: 8px 14px !important;
+        font-size: 13px !important;
     }
-
-    .gif-result {
-        max-width: 200px !important;
+    
+    .result-container h2 {
+        font-size: 1.6rem !important;
     }
 }
