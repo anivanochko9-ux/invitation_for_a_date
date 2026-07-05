@@ -4,50 +4,22 @@
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-}
-
 body {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
     background: linear-gradient(145deg, #fce9f0 0%, #f8dbe9 100%);
     font-family: "Quicksand", sans-serif;
-    margin: 0;
-    padding: 0;
     min-height: 100vh;
     min-height: 100dvh;
-    position: relative;
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
-/* ===== АНІМОВАНІ ЕМОДЗІ ===== */
-.big-emoji {
-    font-size: 80px;
-    text-align: center;
-    display: block;
-    margin: 0 auto 1rem auto;
-}
-
-.heart-beat {
-    animation: heartBeat 1.5s ease-in-out infinite;
-}
-
-@keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    15% { transform: scale(1.2); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.15); }
-    60% { transform: scale(1); }
-}
-
-/* Стилі для кнопки-посилання */
+/* Стилі для кнопки-посилання, яка стоїть під текстом */
 .center-link {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 12px 20px;
     text-align: center;
     font-size: 16px;
@@ -81,35 +53,42 @@ body {
     transform: scale(0.95);
 }
 
-/* ===== ГОЛОВНІ КОНТЕЙНЕРИ ===== */
 .container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-100%, -50%);
+    transition: 0.2s;
     width: 95%;
-    max-width: 500px;
-    text-align: center;
-    padding: 20px 15px;
+    max-width: 600px;
 }
 
 .question-container {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transition: 0.2s;
     width: 95%;
-    max-width: 500px;
-    text-align: center;
-    padding: 15px 10px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
+    max-width: 600px;
+}
+
+.local-gif {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+    display: block;
+    margin: 0 auto 3rem auto;
+    pointer-events: none;
+    box-shadow: 0 8px 30px rgba(180, 80, 120, 0.15);
 }
 
 .question {
-    font-size: 2.8rem;
-    margin-bottom: 0.8rem;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
     text-align: center;
     color: #4d2c3b;
 }
@@ -119,17 +98,16 @@ body {
     justify-content: center;
     gap: 1.5rem;
     position: relative;
-    min-height: 55px;
-    margin-top: 0.3rem;
+    min-height: 60px;
 }
 
 .btn {
     position: absolute;
     border: none;
     border-radius: 50px;
-    padding: 12px 22px;
+    padding: 14px 24px;
     font-family: "Quicksand", sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -157,32 +135,33 @@ body {
 .result-container {
     display: none;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-100%, -50%);
+    transition: 0.2s;
     width: 95%;
-    max-width: 500px;
-    text-align: center;
-    padding: 15px 10px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
+    max-width: 600px;
+}
+
+.gif-result {
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 8px 30px rgba(180, 80, 120, 0.15);
 }
 
 .result-container h2 {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
     text-align: center;
     color: #4d2c3b;
-    margin-bottom: 0.3rem;
-}
-
-.result-container h2:last-of-type {
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: #7f556b;
-    max-width: 450px;
-    margin: 0.5rem auto 0.8rem auto;
-    line-height: 1.5;
 }
 
 /* heart loader */
@@ -192,17 +171,24 @@ body {
     content: "";
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(0.8);
+    -o-transform: translate(-50%, -50%) scale(0.8);
+    -ms-transform: translate(-50%, -50%) scale(0.8);
+    -webkit-transform: translate(-50%, -50%) scale(0.8);
+    -moz-transform: translate(-50%, -50%) scale(0.8);
     margin: 0;
-    z-index: 10;
 }
 
 .cssload-main * {
-    font-size: 50px;
+    font-size: 62px;
 }
 
 .cssload-heart {
     animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -o-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -ms-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -webkit-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -moz-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
     top: 50%;
     content: "";
     left: 50%;
@@ -219,7 +205,15 @@ body {
     display: block;
     border-radius: 100%;
     animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -o-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -ms-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -webkit-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -moz-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
     transform: translate(-28px, -27px);
+    -o-transform: translate(-28px, -27px);
+    -ms-transform: translate(-28px, -27px);
+    -webkit-transform: translate(-28px, -27px);
+    -moz-transform: translate(-28px, -27px);
 }
 
 .cssload-heartR {
@@ -232,7 +226,15 @@ body {
     display: block;
     border-radius: 100%;
     transform: translate(28px, -27px);
+    -o-transform: translate(28px, -27px);
+    -ms-transform: translate(28px, -27px);
+    -webkit-transform: translate(28px, -27px);
+    -moz-transform: translate(28px, -27px);
     animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -o-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -ms-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -webkit-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -moz-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
 }
 
 .cssload-square {
@@ -244,7 +246,15 @@ body {
     display: block;
     content: "";
     transform: scale(1) rotate(-45deg);
+    -o-transform: scale(1) rotate(-45deg);
+    -ms-transform: scale(1) rotate(-45deg);
+    -webkit-transform: scale(1) rotate(-45deg);
+    -moz-transform: scale(1) rotate(-45deg);
     animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -o-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -ms-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -webkit-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -moz-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
 }
 
 .cssload-shadow {
@@ -260,6 +270,10 @@ body {
     border: 1px solid rgba(215, 215, 215, 0.6);
     border-radius: 50%;
     animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -o-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -ms-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -webkit-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+    -moz-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
 }
 
 @keyframes cssload-square {
@@ -272,6 +286,46 @@ body {
     }
 }
 
+@-o-keyframes cssload-square {
+    50% {
+        border-radius: 100%;
+        -o-transform: scale(0.5) rotate(-45deg);
+    }
+    100% {
+        -o-transform: scale(1) rotate(-45deg);
+    }
+}
+
+@-ms-keyframes cssload-square {
+    50% {
+        border-radius: 100%;
+        -ms-transform: scale(0.5) rotate(-45deg);
+    }
+    100% {
+        -ms-transform: scale(1) rotate(-45deg);
+    }
+}
+
+@-webkit-keyframes cssload-square {
+    50% {
+        border-radius: 100%;
+        -webkit-transform: scale(0.5) rotate(-45deg);
+    }
+    100% {
+        -webkit-transform: scale(1) rotate(-45deg);
+    }
+}
+
+@-moz-keyframes cssload-square {
+    50% {
+        border-radius: 100%;
+        -moz-transform: scale(0.5) rotate(-45deg);
+    }
+    100% {
+        -moz-transform: scale(1) rotate(-45deg);
+    }
+}
+
 @keyframes cssload-heart {
     50% {
         transform: rotate(360deg);
@@ -281,15 +335,99 @@ body {
     }
 }
 
+@-o-keyframes cssload-heart {
+    50% {
+        -o-transform: rotate(360deg);
+    }
+    100% {
+        -o-transform: rotate(720deg);
+    }
+}
+
+@-ms-keyframes cssload-heart {
+    50% {
+        -ms-transform: rotate(360deg);
+    }
+    100% {
+        -ms-transform: rotate(720deg);
+    }
+}
+
+@-webkit-keyframes cssload-heart {
+    50% {
+        -webkit-transform: rotate(360deg);
+    }
+    100% {
+        -webkit-transform: rotate(720deg);
+    }
+}
+
+@-moz-keyframes cssload-heart {
+    50% {
+        -moz-transform: rotate(360deg);
+    }
+    100% {
+        -moz-transform: rotate(720deg);
+    }
+}
+
 @keyframes cssload-heartL {
     60% {
         transform: scale(0.4);
     }
 }
 
+@-o-keyframes cssload-heartL {
+    60% {
+        -o-transform: scale(0.4);
+    }
+}
+
+@-ms-keyframes cssload-heartL {
+    60% {
+        -ms-transform: scale(0.4);
+    }
+}
+
+@-webkit-keyframes cssload-heartL {
+    60% {
+        -webkit-transform: scale(0.4);
+    }
+}
+
+@-moz-keyframes cssload-heartL {
+    60% {
+        -moz-transform: scale(0.4);
+    }
+}
+
 @keyframes cssload-heartR {
     40% {
         transform: scale(0.4);
+    }
+}
+
+@-o-keyframes cssload-heartR {
+    40% {
+        -o-transform: scale(0.4);
+    }
+}
+
+@-ms-keyframes cssload-heartR {
+    40% {
+        -ms-transform: scale(0.4);
+    }
+}
+
+@-webkit-keyframes cssload-heartR {
+    40% {
+        -webkit-transform: scale(0.4);
+    }
+}
+
+@-moz-keyframes cssload-heartR {
+    40% {
+        -moz-transform: scale(0.4);
     }
 }
 
@@ -300,19 +438,48 @@ body {
     }
 }
 
+@-o-keyframes cssload-shadow {
+    50% {
+        -o-transform: scale(0.5);
+        border-color: rgba(228, 228, 228, 0.6);
+    }
+}
+
+@-ms-keyframes cssload-shadow {
+    50% {
+        -ms-transform: scale(0.5);
+        border-color: rgba(228, 228, 228, 0.6);
+    }
+}
+
+@-webkit-keyframes cssload-shadow {
+    50% {
+        -webkit-transform: scale(0.5);
+        border-color: rgba(228, 228, 228, 0.6);
+    }
+}
+
+@-moz-keyframes cssload-shadow {
+    50% {
+        -moz-transform: scale(0.5);
+        border-color: rgba(228, 228, 228, 0.6);
+    }
+}
+
 /* ===== МОБІЛЬНА АДАПТАЦІЯ ===== */
 @media (max-width: 768px) {
     .question {
-        font-size: 2.2rem !important;
+        font-size: 2.5rem !important;
+        text-align: center;
     }
 
-    .big-emoji {
-        font-size: 60px !important;
-        margin: 0 auto 0.8rem auto !important;
+    .local-gif {
+        max-width: 200px !important;
+        margin: 0 auto 2rem auto !important;
     }
 
     .btn {
-        padding: 10px 16px !important;
+        padding: 10px 18px !important;
         font-size: 14px !important;
         position: relative !important;
     }
@@ -320,10 +487,10 @@ body {
     .button-container {
         display: flex !important;
         justify-content: center !important;
-        gap: 0.8rem !important;
+        gap: 1rem !important;
         flex-wrap: wrap !important;
-        margin-top: 0.3rem !important;
-        min-height: 45px !important;
+        margin-top: 1rem !important;
+        min-height: 50px !important;
     }
 
     .yes-btn {
@@ -338,36 +505,39 @@ body {
 
     .result-container h2 {
         font-size: 2rem !important;
+        padding: 0 1rem;
     }
 
-    .result-container h2:last-of-type {
-        font-size: 0.95rem !important;
-        padding: 0 0.5rem;
+    .gif-result {
+        width: 100% !important;
+        max-width: 300px !important;
     }
 
     .cssload-main {
-        transform: translate(-50%, -50%) scale(0.45) !important;
+        transform: translate(-50%, -50%) scale(0.6) !important;
+        top: 50% !important;
+        left: 50% !important;
+        margin: 0 !important;
     }
 
     .center-link {
         padding: 10px 16px !important;
         font-size: 14px !important;
-        margin-top: 10px !important;
+        display: inline-block !important;
+        margin-top: 15px !important;
     }
 
     .question-container,
     .result-container {
-        width: 98% !important;
+        width: 95% !important;
         max-width: 400px !important;
-        padding: 10px 8px !important;
         top: 50% !important;
         transform: translate(-50%, -50%) !important;
+        padding: 1rem !important;
     }
-    
+
     .container {
-        width: 98% !important;
-        max-width: 400px !important;
-        padding: 10px 8px !important;
+        width: 95% !important;
     }
 }
 
@@ -377,41 +547,12 @@ body {
         font-size: 1.8rem !important;
     }
 
-    .big-emoji {
-        font-size: 50px !important;
-    }
-
     .btn {
         font-size: 12px !important;
-        padding: 8px 12px !important;
-    }
-
-    .result-container h2 {
-        font-size: 1.6rem !important;
-    }
-
-    .result-container h2:last-of-type {
-        font-size: 0.85rem !important;
-    }
-}
-
-@media (max-height: 700px) {
-    .big-emoji {
-        font-size: 50px !important;
-        margin: 0 auto 0.5rem auto !important;
-    }
-    
-    .question {
-        font-size: 1.8rem !important;
-        margin-bottom: 0.4rem !important;
-    }
-    
-    .btn {
         padding: 8px 14px !important;
-        font-size: 13px !important;
     }
-    
+
     .result-container h2 {
-        font-size: 1.6rem !important;
+        font-size: 1.5rem !important;
     }
 }
