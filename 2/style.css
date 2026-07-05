@@ -8,11 +8,12 @@ body {
     display: grid;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background: linear-gradient(145deg, #fce9f0 0%, #f8dbe9 100%);
     font-family: "Quicksand", sans-serif;
     min-height: 100vh;
     min-height: 100dvh;
-    /* Для мобільних з адресною строкою */
+    margin: 0;
+    padding: 0;
 }
 
 /* Стилі для кнопки-посилання, яка стоїть під текстом */
@@ -23,26 +24,29 @@ body {
     text-align: center;
     font-size: 16px;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.8);
-    background: rgba(180, 0, 45, 0.40);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 25px;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(180, 0, 45, 0.35);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
     text-decoration: none;
     z-index: 2;
-    font-family: Arial, sans-serif;
+    font-family: 'Quicksand', Arial, sans-serif;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     user-select: none;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 8px 25px rgba(180, 80, 120, 0.15);
 }
 
 .center-link:hover {
-    background: rgba(180, 0, 45, 0.55);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(180, 0, 45, 0.5);
+    border-color: rgba(255, 255, 255, 0.4);
     color: rgba(255, 255, 255, 1);
     transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(180, 80, 120, 0.25);
 }
 
 .center-link:active {
@@ -75,16 +79,18 @@ body {
 .local-gif {
     width: 100%;
     max-width: 300px;
-    border-radius: 10px;
+    border-radius: 15px;
     display: block;
     margin: 0 auto 3rem auto;
     pointer-events: none;
+    box-shadow: 0 8px 30px rgba(180, 80, 120, 0.15);
 }
 
 .question {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     text-align: center;
+    color: #4d2c3b;
 }
 
 .button-container {
@@ -100,22 +106,22 @@ body {
     border: none;
     border-radius: 50px;
     padding: 14px 24px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Quicksand", sans-serif;
     font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: #ff54a4;
+    background-color: #d63384;
     color: white;
     transform: scale(1.05);
-    box-shadow: 0px 4px 15px rgba(255, 107, 129, 0.5);
+    box-shadow: 0px 4px 15px rgba(214, 51, 132, 0.3);
     -webkit-tap-highlight-color: transparent;
 }
 
 .btn:hover {
-    background-color: #ffa4b1;
+    background-color: #b02a6e;
     transform: scale(1.1);
-    box-shadow: 0px 6px 20px rgba(255, 107, 129, 0.7);
-    text-shadow: 1px 1px 5px rgba(255, 182, 193, 0.8);
+    box-shadow: 0px 6px 25px rgba(214, 51, 132, 0.4);
 }
 
 .yes-btn {
@@ -142,7 +148,7 @@ body {
 }
 
 .gif-result {
-    border-radius: 10px;
+    border-radius: 15px;
     margin-bottom: 2rem;
     width: 100%;
     max-width: 400px;
@@ -154,6 +160,7 @@ body {
 .result-container h2 {
     font-size: 3.2rem;
     text-align: center;
+    color: #4d2c3b;
 }
 
 /* heart loader */
@@ -258,8 +265,8 @@ body {
     bottom: -0.5em;
     width: 1em;
     height: 0.24em;
-    background-color: rgb(215, 215, 215);
-    border: 1px solid rgb(215, 215, 215);
+    background-color: rgba(215, 215, 215, 0.6);
+    border: 1px solid rgba(215, 215, 215, 0.6);
     border-radius: 50%;
     animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
     -o-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
@@ -436,35 +443,35 @@ body {
 @keyframes cssload-shadow {
     50% {
         transform: scale(0.5);
-        border-color: rgb(228, 228, 228);
+        border-color: rgba(228, 228, 228, 0.6);
     }
 }
 
 @-o-keyframes cssload-shadow {
     50% {
         -o-transform: scale(0.5);
-        border-color: rgb(228, 228, 228);
+        border-color: rgba(228, 228, 228, 0.6);
     }
 }
 
 @-ms-keyframes cssload-shadow {
     50% {
         -ms-transform: scale(0.5);
-        border-color: rgb(228, 228, 228);
+        border-color: rgba(228, 228, 228, 0.6);
     }
 }
 
 @-webkit-keyframes cssload-shadow {
     50% {
         -webkit-transform: scale(0.5);
-        border-color: rgb(228, 228, 228);
+        border-color: rgba(228, 228, 228, 0.6);
     }
 }
 
 @-moz-keyframes cssload-shadow {
     50% {
         -moz-transform: scale(0.5);
-        border-color: rgb(228, 228, 228);
+        border-color: rgba(228, 228, 228, 0.6);
     }
 }
 
