@@ -15,7 +15,11 @@
 <body>
 
     <div class="question-container container">
-        <video class="local-gif" src="Reply me love.mp4" autoplay muted loop playsinline></video>
+        <!-- Відео з fallback -->
+        <div class="gif-placeholder">
+            <video class="local-gif" src="Reply me love.mp4" autoplay muted loop playsinline></video>
+            <div class="fallback-emoji" style="display:none; font-size:80px; text-align:center;">💕</div>
+        </div>
         <h2 class="question">Do you love me?</h2>
         <div class="button-container">
             <button class="yes-btn btn js-yes-btn">Yes</button>
@@ -23,7 +27,10 @@
         </div>
     </div>
     <div class="result-container container">
-        <video class="gif-result" src="Love me.mp4" autoplay loop playsinline></video>
+        <div class="gif-placeholder">
+            <video class="gif-result" src="Love me.mp4" autoplay loop playsinline></video>
+            <div class="fallback-emoji" style="display:none; font-size:80px; text-align:center;">😍</div>
+        </div>
         <h2>I knew it😍!</h2>
         <h2></h2>
         <h2>My love, I'd like to invite you on a date, but first we need to sort out a few details ❤️</h2>
